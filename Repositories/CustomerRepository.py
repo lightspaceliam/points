@@ -33,4 +33,4 @@ class CustomerRepository(RepositoryBase):
             print(ex)
         finally:
             cursor.close()
-            self.connection.close()
+            #self.connection.close()

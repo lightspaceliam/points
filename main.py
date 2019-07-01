@@ -1,39 +1,34 @@
 # Main.
-import configparser
 import pyodbc
-import CalcPoint
-from Query import Query
-from ProductsData import ProductsData
+import DerivedEntities.CalcPoint
+from Helpers.Query import Query
+from Repositories.ProductRepository import ProductRepository
 from Repositories.CustomerRepository import CustomerRepository
+from Repositories.TransactionRepository import TransactionRepository
 
 def main():
 
-    # config = configparser.ConfigParser()
-    # config.read('config.ini')
-
-    # print('DB: {0}'.format(config['ProntoCube']['server']))
-
-    print('Name: {0}'.format(__name__))
-    productsData = ProductsData()
-    products = productsData.getData()
+    productRepo = ProductRepository()
+    products = productRepo.getData()
 
     print('There are {0} products.'.format(len(products)))
 
-    repo = CustomerRepository()
-    customerCodes = repo.getActiveCustomerCode()
+    customerRepo = CustomerRepository()
+    customerCodes = customerRepo.getActiveCustomerCode()
 
     print('There are {0} active customers.'.format(len(customerCodes)))
     # for customer in customers:
     #     print(customer)
 
-    # customerCodes = []
+    customerCode = customerCodes[0]
 
+    transactionRepo = TransactionRepository(customerCode)
 
+    transactions = transactionRepo.getTransactions()
 
-    query = Query('DIMA')
-
-    # print(q.customerCode)
-    # print(q.addCode())
+    for row in transactions:
+        print('CustName: {0}, ProdCode: {1}'.format(row.customerName,row.productCode))
+    
 
     print('Yo Python Promotion Points Reader.')
 

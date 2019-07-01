@@ -1,4 +1,4 @@
-class CalcPopint:
+class CalcPoint:
 
     orderNo: int = 0
     customerCode: str = ''

@@ -1,6 +1,6 @@
-from Product import Product
+from DerivedEntities.Product import Product
 
-class ProductsData:
+class ProductRepository:
 
     products = []
 

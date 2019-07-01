@@ -14,23 +14,17 @@ SELECT	T.OrderNo
 		, T.InvoiceNo
 		, T.TransactionType
 		, T.OrderStatus
-		--, T.IsCancelled
 		, LTRIM(RTRIM(TL.bi_stock_code)) AS 'ProductCode'
 		, LTRIM(RTRIM(TL.long_descript)) AS 'ProductName'
 		, LTRIM(RTRIM(TL.bi_sf_sol_stk_unit_desc)) AS 'Uom'
-		
-		--  ITEM PRICE
 		, TL.bi_sf_sol_item_price AS 'ItemPricePerUnit'
 		, TL.[value] AS 'AmountExGst'
 		, TL.value_inc_tax AS 'AmountIncGst'
 		, TL.bi_sf_sol_ship_sales_tax_amt AS 'TaxAmount'
 		, TL.bi_sf_sol_tax_rate AS 'TaxRate'
-
-		--  SHIPPED
 		, TL.bi_sf_sol_stk_unit_conversion AS 'ConversionFactor'
 		, TL.bi_sf_sol_shipped_qty AS 'ShippedQty'
 		, TL.bi_sf_sol_shipped_amount AS 'ShippedAmount'
-		--, TL.*
 FROM	bi_so_fact_all_v AS TL
 		INNER JOIN (
 				SELECT	CONVERT(INT, bi_so_order_no) AS 'OrderNo'
