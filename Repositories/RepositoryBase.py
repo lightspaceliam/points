@@ -3,21 +3,15 @@ import configparser
 
 class RepositoryBase:
 
-    # config = configparser.ConfigParser()
-    # config.read('config.ini')
-    # print('Base Repo: ' + config['ProntoCube']['server'])
+    # read must be configured with utf-8 encoding.
+    _config = configparser.ConfigParser()
+    _config.read('config.ini', encoding='utf-8')
     
-    server: str = ''
-    database: str = ''
-    username: str = ''
-    password: str = ''
-
     connection = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server +
-        ';DATABASE='+database+';UID='+username+';PWD=' + password
+        'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+_config.get('ProntoCube','server') +
+        ';DATABASE='+_config.get('ProntoCube','database')+';UID='+_config.get('ProntoCube','username')+';PWD=' + _config.get('ProntoCube','password')
     )
-    connection.setencoding(encoding='utf-8')
 
     def getCursor(self):
-
+     
         return self.connection.cursor()
