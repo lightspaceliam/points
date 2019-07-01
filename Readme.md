@@ -1,0 +1,3 @@
+# Points
+
+This will be my 1st attempt at working with Python 3^. I have an extremely uninteresting task of reading data from one location and exporting it to an Excel spreadsheet. To make things interesting for myself, I thought I would use Python 3 to do the heavy lifting as opposed to what I traditionally work with, .NET Core. This is a personal challenge to see if I can transfer my skills in .NET over to Python, including all the good stuff like inheritance and more. I’m sure there will be lots of refactoring as I pick up how the Python folk do things and at the very least I get something on my Github repo for show and tell.

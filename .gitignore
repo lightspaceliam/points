@@ -1,2 +1,5 @@
-# Ignor all .ini files.
+# Ignore all .ini files.
 *.ini
+
+# Ignore __pycache__
+__pycache__
