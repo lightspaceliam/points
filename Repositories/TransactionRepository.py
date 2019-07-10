@@ -13,7 +13,7 @@ class TransactionRepository(RepositoryBase):
     
     def getTransactions(self):
         cursor = self.getCursor()
-        print(self.code)
+        #print(self.code)
         query = Query(self.code)
         queryString = query.addCode()
         try:
